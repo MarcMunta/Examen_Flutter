@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'detail_page.dart';
+
+import '../routes.dart';
 
 class ListPage extends StatelessWidget {
   const ListPage({super.key});
@@ -31,11 +32,13 @@ class ListPage extends StatelessWidget {
                   title: Text('Elemento $index: ${_items[index]}'),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => Home(),
-                      ),
+                      AppRoutes.detail,
+                      arguments: {
+                        'index': index,
+                        'text': _items[index],
+                      },
                     );
                   },
                 );
